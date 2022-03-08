@@ -17,8 +17,11 @@ db.NomeCollection.insert({campo: "Diego",  rua: "rua porto da saudade"})
 -- trazer os dados da collection
 db.NomeCollection.find({campo: "Diego"})
 
+-- conta a quantidade de dados da table
+db.megasena.count()
 
-
+-- mostra os status da table
+db.megasena.stats()
 
 
 
