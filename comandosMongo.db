@@ -23,7 +23,8 @@ db.megasena.count()
 -- mostra os status da table
 db.megasena.stats()
 
-
+-- remove informação
+db.albuns.remove({nome: "texto a ser localizado no documento"})
 
 
 
