@@ -1,0 +1,6 @@
+-- inicia
+mongo
+
+
+-- mostra todas as tables 
+show tables
