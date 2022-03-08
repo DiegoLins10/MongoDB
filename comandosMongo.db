@@ -33,6 +33,9 @@ db.megasena.find({Concurso: 73}).pretty();
 -- procurar com varias condições
 db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1})
 
+-- escolhendo os campos que quero que apareça e fazendo o id não aparecer
+db.megasena.find({Ganhadores_Sena:5}, {Concurso:true, _id:false})
+
 
 -- importar um arquivo csv para o uma collection mongo db
 mongoimport --db=mega --collection=megasena --type=csv --headerline --file=C:\Users\diego.lins\Desktop\teste\megasena.csv
