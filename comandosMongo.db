@@ -30,8 +30,11 @@ db.albuns.remove({nome: "texto a ser localizado no documento"})
 -- mostra os resultados em forma de json
 db.megasena.find({Concurso: 73}).pretty();
 
--- procurar com varias condições
+-- procurar e aparecer uma
 db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1})
+
+-- procurar e aparecer duas colunas
+db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1, Cidade:1})
 
 -- escolhendo os campos que quero que apareça e fazendo o id não aparecer
 db.megasena.find({Ganhadores_Sena:5}, {Concurso:true, _id:false})
