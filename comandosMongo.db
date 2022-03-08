@@ -30,6 +30,8 @@ db.albuns.remove({nome: "texto a ser localizado no documento"})
 -- mostra os resultados em forma de json
 db.megasena.find({Concurso: 73}).pretty();
 
+-- procurar com varias condições
+db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1})
 
 
 -- importar um arquivo csv para o uma collection mongo db
