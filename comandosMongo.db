@@ -1,9 +1,26 @@
 -- inicia
 mongo
 
+-- mostra os bancos 
+show dbs
+
+-- seleciona o banco
+use aula2
 
 -- mostra todas as tables 
 show tables
+show collections
+
+-- INSERT E CRIANÇA DE TABELAS
+db.NomeCollection.insert({campo: "Diego",  rua: "rua porto da saudade"})
+
+-- trazer os dados da collection
+db.NomeCollection.find({campo: "Diego"})
+
+
+
+
+
 
 
 
