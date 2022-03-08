@@ -16,6 +16,7 @@ db.NomeCollection.insert({campo: "Diego",  rua: "rua porto da saudade"})
 
 -- trazer os dados da collection
 db.NomeCollection.find({campo: "Diego"})
+db.megasena({Concurso: 73})
 
 -- conta a quantidade de dados da table
 db.megasena.count()
@@ -25,6 +26,9 @@ db.megasena.stats()
 
 -- remove informação
 db.albuns.remove({nome: "texto a ser localizado no documento"})
+
+-- mostra os resultados em forma de json
+db.megasena.find({Concurso: 73}).pretty();
 
 
 
