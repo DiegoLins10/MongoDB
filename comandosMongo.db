@@ -54,6 +54,9 @@ db.runCommand({collMod: "ganhadores", validator: {"CPF":{$exist:true}}})
 -- obriga o usuario colocar o email
 db.runCommand({collMod: "ganhadores", validator: {"CPF":{$exist:true},{email: $regex: /@gmail\.com$/}}})
 
+-- achar todos os sim ignorando letras minusculas e maisculas
+db.megasena.find({"Acumulado":/sim/i}).count()
+
 -- apaga o banco todo
 db.teste.drop();
 
