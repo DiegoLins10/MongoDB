@@ -57,6 +57,9 @@ db.runCommand({collMod: "ganhadores", validator: {"CPF":{$exist:true},{email: $r
 -- achar todos os sim ignorando letras minusculas e maisculas
 db.megasena.find({"Acumulado":/sim/i}).count()
 
+--achar todos os nomes que tem as
+ db.albuns.find({"Nome": /as/})
+
 -- apaga o banco todo
 db.teste.drop();
 
