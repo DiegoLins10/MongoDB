@@ -48,6 +48,9 @@ db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 333333333333}}, {m
 -- usando upsert que verifica todos os objetos e dá um update em todos que existir com o nome
 db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 999999999}}, {multi:1, upsert:0});
 
+-- obriga o usuario adicionar o CPF em ganhadores
+db.runCommand({collMod: "ganhadores", validator: {"CPF":{$exist:true}}})
+
 -- apaga o banco todo
 db.teste.drop();
 
