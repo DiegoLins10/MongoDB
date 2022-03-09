@@ -45,6 +45,9 @@ db.ganhadores.insert({Concurso: 99999, CPF:12345678900, Nome: "Coffin Joe"})
 -- usando upsert que verifica se já existe, se existir dá update, se não existir... dá um insert
 db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 333333333333}}, {multi:0, upsert:1});
 
+-- usando upsert que verifica todos os objetos e dá um update em todos que existir com o nome
+db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 999999999}}, {multi:1, upsert:0});
+
 -- apaga o banco todo
 db.teste.drop();
 
