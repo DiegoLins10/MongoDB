@@ -59,6 +59,9 @@ db.megasena.find({"Acumulado":/sim/i}).count()
 
 --achar todos os nomes que tem as
  db.albuns.find({"Nome": /as/})
+ 
+ -- achar as palavras que iniciamm com mar
+ db.albuns.find({"nome": /^mar/i},{"nome": 1, "_id":0})
 
 -- apaga o banco todo
 db.teste.drop();
