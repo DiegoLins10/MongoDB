@@ -45,6 +45,8 @@ db.ganhadores.insert({Concurso: 99999, CPF:12345678900, Nome: "Coffin Joe"})
 -- usando upsert que verifica se já existe, se existir dá update, se não existir... dá um insert
 db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 333333333333}}, {multi:0, upsert:1});
 
+-- apaga o banco todo
+db.teste.drop();
 
 -- importar um arquivo csv para o uma collection mongo db
 mongoimport --db=mega --collection=megasena --type=csv --headerline --file=C:\Users\diego.lins\Desktop\teste\megasena.csv
