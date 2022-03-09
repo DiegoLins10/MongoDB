@@ -39,6 +39,12 @@ db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1, Cidade:1})
 -- escolhendo os campos que quero que apareça e fazendo o id não aparecer
 db.megasena.find({Ganhadores_Sena:5}, {Concurso:true, _id:false})
 
+-- criando uma nova table
+db.ganhadores.insert({Concurso: 99999, CPF:12345678900, Nome: "Coffin Joe"})
+
+-- usando upsert que verifica se já existe, se existir dá update, se não existir... dá um insert
+db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 333333333333}}, {multi:0, upsert:1});
+
 
 -- importar um arquivo csv para o uma collection mongo db
 mongoimport --db=mega --collection=megasena --type=csv --headerline --file=C:\Users\diego.lins\Desktop\teste\megasena.csv
