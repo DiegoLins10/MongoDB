@@ -51,6 +51,9 @@ db.ganhadores.update({Nome: "Mula sem cabeça"}, {$set: {CPF: 999999999}}, {mult
 -- obriga o usuario adicionar o CPF em ganhadores
 db.runCommand({collMod: "ganhadores", validator: {"CPF":{$exist:true}}})
 
+-- obriga o usuario colocar o email
+db.runCommand({collMod: "ganhadores", validator: {"CPF":{$exist:true},{email: $regex: /@gmail\.com$/}}})
+
 -- apaga o banco todo
 db.teste.drop();
 
