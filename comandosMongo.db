@@ -68,3 +68,6 @@ db.teste.drop();
 
 -- importar um arquivo csv para o uma collection mongo db
 mongoimport --db=mega --collection=megasena --type=csv --headerline --file=C:\Users\diego.lins\Desktop\teste\megasena.csv
+
+--criando collection e limitando a 2 informações
+db.createCollection("cacheDeDoisDocumentos", {capped: true, size: 4096, max: 2})
