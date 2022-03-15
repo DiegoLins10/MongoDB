@@ -98,6 +98,9 @@ result = db.runCommand({ "mapreduce" : "megasena", "map" : map, "reduce" : reduc
  db.megasena.aggregate({ $group: {_id: null,total: { $sum: 1 } , soma: { $sum: "$Ganhadores_Quina" } , avg: { $avg: "$Ganhadores_Quina" } } })
  
  
+ -- mesma coisa que o MapReduce fez
+ db.megasena.aggregate({ $group: {_id: "$Acumulado", soma: { $sum: "$Ganhadores_Sena" } } })
+ 
  -------------- metodo documentacao mongo ----------------
  db.posts.mapReduce( 
    function() { emit(this.user_id,1); }, 
