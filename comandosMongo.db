@@ -94,6 +94,9 @@ result = db.runCommand({ "mapreduce" : "megasena", "map" : map, "reduce" : reduc
 
  db.ganhadores.find();
  
+ -- semelhante a avg e sum sql server
+ db.megasena.aggregate({ $group: {_id: null,total: { $sum: 1 } , soma: { $sum: "$Ganhadores_Quina" } , avg: { $avg: "$Ganhadores_Quina" } } })
+ 
  
  -------------- metodo documentacao mongo ----------------
  db.posts.mapReduce( 
