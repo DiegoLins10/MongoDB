@@ -71,3 +71,49 @@ mongoimport --db=mega --collection=megasena --type=csv --headerline --file=C:\Us
 
 --criando collection e limitando a 2 informações
 db.createCollection("cacheDeDoisDocumentos", {capped: true, size: 4096, max: 2})
+
+--SCHEMA DESIGN adicionando varios personagens
+db.seriados.insert({ "_id":4, "nome":"Chaves", "personagens":[ "Seu Barriga", "Quico", "Chaves", "Chiquinha","Nhonho","Dona Florinda"]})
+
+-- mapReduce
+map = function() {  emit(this.Acumulado , this.Ganhadores_Sena );}
+
+reduce = function(Acumulado, Ganhadores_Sena) {return Array.sum(Ganhadores_Sena); }
+
+--collection ganhadores criando
+result = db.runCommand({ "mapreduce" : "megasena", "map" : map, "reduce" : reduce, "out" : "ganhadores", "bypassDocumentValidation" : true })
+
+• db.ganhadores.find();
+
+--------------- ganhadores da quina -----------------------
+map = function() {  emit(this.Acumulado , this.Ganhadores_Quina );}
+
+reduce = function(Acumulado, Ganhadores_Quina) {return Array.sum(Ganhadores_Quina); }
+
+result = db.runCommand({ "mapreduce" : "megasena", "map" : map, "reduce" : reduce, "out" : "ganhadores", "bypassDocumentValidation" : true })
+
+ db.ganhadores.find();
+ 
+ 
+ -------------- metodo documentacao mongo ----------------
+ db.posts.mapReduce( 
+   function() { emit(this.user_id,1); }, 
+	
+   function(key, values) {return Array.sum(values)}, {  
+      query:{status:"active"},  
+      out:"post_total" 
+   }
+)
+
+
+db.posts.mapReduce( 
+   function() { emit(this.user_id,1); }, 
+   function(key, values) {return Array.sum(values)}, {  
+      query:{status:"active"},  
+      out:"post_total" 
+   }
+	
+).find()
+
+---------------------------------------- FIM -------------------------------------------------------
+
