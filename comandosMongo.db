@@ -123,3 +123,29 @@ db.posts.mapReduce(
 
 ---------------------------------------- FIM -------------------------------------------------------
 
+--INDICE TTL
+
+db.operacoes.insert({"log":"usuário jao entrou", "quando":new Date()})
+ Para exemplificar vamos criar uma collection chamada operações:
+• db.operacoes.insert({"log":"usuário jao entrou", "quando":new Date()})
+• db.operacoes.insert({"log":"usuário ezequiel entrou","quando":new Date()})
+• db.operacoes.insert({"log":"usuária elisa entrou","quando":new Date()})
+• db.operacoes.insert({"log":"usuária ágata saiu","quando":new Date()})
+• db.operacoes.insert({"log":"usuário marco saiu","quando":new Date()})
+• db.operacoes.insert({"log":"usuária michele entrou","quando":new Date()})
+• db.operacoes.insert({"log":"usuário rafael entrou","quando":new Date()})
+• db.operacoes.insert({"log":"usuária joana saiu","quando":new Date()})
+• db.operacoes.insert({"log":"usuário fernando saiu","quando":new Date()})
+• Após a carga de dados, contamos nove registros:
+• > db.operacoes.count()
+
+
+Para criar o índice TTL, usamos a seguinte sintaxe:
+• db.collection.createIndex( { <campo> : 1 }, {
+expireAfterSeconds: <duracaoDoRegistroEmSegundos> } );
+• Vamos criar um índice para manter registros por 10 segundos:
+• db.operacoes.createIndex( { "quando": 1 },{expireAfterSeconds: 10 } ) -- apos 10 seg ele apaga os valores
+
+-------------------------------- fim ttl ----------------------------------------
+
+
