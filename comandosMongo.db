@@ -147,5 +147,16 @@ expireAfterSeconds: <duracaoDoRegistroEmSegundos> } );
 • db.operacoes.createIndex( { "quando": 1 },{expireAfterSeconds: 10 } ) -- apos 10 seg ele apaga os valores
 
 -------------------------------- fim ttl ----------------------------------------
+Criando index de texto
+db.textos.createIndex( {texto: "text"}, {default_language:"portuguese"} )
+
+Cadastraremos uma frase simples:
+db.textos.insert({texto: "Eu gosto de São Paulo"})
+
+Fazendo uma busca por trechos parecidos, como "ele gosta"
+ou "gostar", o texto é encontrado:
+db.textos.find( { $text: { $search: "ele gosta" } } )
+db.textos.find( { $text: { $search: "gostar" } } )
+
 
 
