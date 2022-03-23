@@ -33,6 +33,7 @@ db.megasena.find({Concurso: 73}).pretty();
 -- procurar e aparecer uma
 db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1})
 
+
 -- procurar e aparecer duas colunas
 db.megasena.find({"Ganhadores_Sena": 5}, {Concurso:1, Cidade:1})
 
@@ -163,4 +164,7 @@ db.aprovados.aggregate({ $group: {_id: "$Situação_de_aprovação", total: { $s
 
 -- quantidade de alunos aprovados e em lista de espera do SISU---
 db.aprovados.aggregate({ $group: {_id: "$Situação_de_aprovação", total: { $sum: 1} } })
+
+-- quantidade de alunos por curso no SISU 2021 ------
+db.aprovados.aggregate({ $group: {_id: "$Curso", total: { $sum: 1} } })
 
