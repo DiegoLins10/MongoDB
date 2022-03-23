@@ -161,4 +161,6 @@ db.textos.find( { $text: { $search: "gostar" } } )
 -------------------- sum separando pelo id -----------------------
 db.aprovados.aggregate({ $group: {_id: "$Situação_de_aprovação", total: { $sum: "$Nota_de_corte"} } })
 
+-- quantidade de alunos aprovados e em lista de espera do SISU---
+db.aprovados.aggregate({ $group: {_id: "$Situação_de_aprovação", total: { $sum: 1} } })
 
