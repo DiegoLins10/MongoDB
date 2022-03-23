@@ -158,5 +158,7 @@ ou "gostar", o texto é encontrado:
 db.textos.find( { $text: { $search: "ele gosta" } } )
 db.textos.find( { $text: { $search: "gostar" } } )
 
+-------------------- sum separando pelo id -----------------------
+db.aprovados.aggregate({ $group: {_id: "$Situação_de_aprovação", total: { $sum: "$Nota_de_corte"} } })
 
 
