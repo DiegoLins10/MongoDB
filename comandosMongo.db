@@ -168,3 +168,6 @@ db.aprovados.aggregate({ $group: {_id: "$Situação_de_aprovação", total: { $s
 -- quantidade de alunos por curso no SISU 2021 ------
 db.aprovados.aggregate({ $group: {_id: "$Curso", total: { $sum: 1} } })
 
+-- media de notas por curso -----
+db.aprovadosNovo.aggregate({ $group: {_id: "$Curso", Media: { $avg: "$Resultado_nota"} } })
+
