@@ -171,3 +171,7 @@ db.aprovados.aggregate({ $group: {_id: "$Curso", total: { $sum: 1} } })
 -- media de notas por curso -----
 db.aprovadosNovo.aggregate({ $group: {_id: "$Curso", Media: { $avg: "$Resultado_nota"} } })
 
+--------------------------------------------------------
+aumenta o valor em 500
+db.albuns.update({"_id": ObjectId("57d08d348688b893a04c3e8d")},{$inc:{ "preco" : 500 }})
+
